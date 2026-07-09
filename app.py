@@ -7,7 +7,10 @@ app = Flask(__name__)
 
 @app.context_processor
 def inject_site_settings():
-    return {"ga_measurement_id": os.getenv("GA_MEASUREMENT_ID", "")}
+    return {
+        "ga_measurement_id": os.getenv("GA_MEASUREMENT_ID", ""),
+        "adsense_client": os.getenv("ADSENSE_CLIENT", "ca-pub-4708215788911775"),
+    }
 
 @app.route("/")
 def home():
