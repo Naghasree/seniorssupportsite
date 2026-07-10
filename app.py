@@ -29,6 +29,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 @app.route("/privacy-policy")
 def privacy_policy():
     return render_template("privacy.html")
@@ -57,6 +62,36 @@ def home_safety_checklist():
 @app.route("/caregiver-planning-guide")
 def caregiver_planning_guide():
     return render_template("caregiver_planning_guide.html")
+
+
+@app.route("/senior-benefits-checklist")
+def senior_benefits_checklist():
+    return render_template("senior_benefits_checklist.html")
+
+
+@app.route("/questions-before-hiring-caregiver")
+def questions_before_hiring_caregiver():
+    return render_template("questions_before_hiring_caregiver.html")
+
+
+@app.route("/assisted-living-comparison")
+def assisted_living_comparison():
+    return render_template("assisted_living_comparison.html")
+
+
+@app.route("/medication-management-tips")
+def medication_management_tips():
+    return render_template("medication_management_tips.html")
+
+
+@app.route("/dementia-early-signs-guide")
+def dementia_early_signs_guide():
+    return render_template("dementia_early_signs_guide.html")
+
+
+@app.route("/senior-transportation-options")
+def senior_transportation_options():
+    return render_template("senior_transportation_options.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
