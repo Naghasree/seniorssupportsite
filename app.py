@@ -93,5 +93,10 @@ def dementia_early_signs_guide():
 def senior_transportation_options():
     return render_template("senior_transportation_options.html")
 
+
+@app.route("/complete-senior-care-planning-guide")
+def complete_senior_care_planning_guide():
+    return render_template("complete_senior_care_planning_guide.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

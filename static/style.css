@@ -461,6 +461,40 @@ a:hover { color: var(--accent); }
     margin-bottom: 0.5rem;
 }
 
+.article-meta {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface2);
+}
+
+.article-meta p {
+    margin: 0.2rem 0;
+}
+
+.related-links {
+    margin-top: 1.6rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+}
+
+.related-links h2 {
+    margin-top: 0;
+}
+
+.related-links ul {
+    margin-top: 0.6rem;
+}
+
+.related-links a {
+    color: var(--accent2);
+}
+
+.related-links a:hover {
+    color: var(--accent);
+}
+
 /* ── Footer ── */
 footer {
     margin-top: auto;
