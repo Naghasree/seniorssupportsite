@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, Response, render_template, request
 
 app = Flask(__name__)
 
@@ -97,6 +97,53 @@ def senior_transportation_options():
 @app.route("/complete-senior-care-planning-guide")
 def complete_senior_care_planning_guide():
     return render_template("complete_senior_care_planning_guide.html")
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    base_url = request.url_root.rstrip("/")
+    pages = [
+        "/",
+        "/about",
+        "/projects",
+        "/skills",
+        "/contact",
+        "/privacy-policy",
+        "/terms",
+        "/disclaimer",
+        "/medicare-basics",
+        "/home-safety-checklist",
+        "/caregiver-planning-guide",
+        "/senior-benefits-checklist",
+        "/questions-before-hiring-caregiver",
+        "/assisted-living-comparison",
+        "/medication-management-tips",
+        "/dementia-early-signs-guide",
+        "/senior-transportation-options",
+        "/complete-senior-care-planning-guide",
+    ]
+
+    urls = "\n".join(
+        f"  <url><loc>{base_url}{path}</loc></url>" for path in pages
+    )
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{urls}\n"
+        "</urlset>"
+    )
+    return Response(sitemap, mimetype="application/xml")
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    base_url = request.url_root.rstrip("/")
+    robots = (
+        "User-agent: *\n"
+        "Allow: /\n\n"
+        f"Sitemap: {base_url}/sitemap.xml\n"
+    )
+    return Response(robots, mimetype="text/plain")
 
 if __name__ == "__main__":
     app.run(debug=True)
