@@ -7,9 +7,26 @@ app = Flask(__name__)
 
 @app.context_processor
 def inject_site_settings():
+    ad_eligible_endpoints = {
+        "home",
+        "projects",
+        "skills",
+        "medicare_basics",
+        "home_safety_checklist",
+        "caregiver_planning_guide",
+        "senior_benefits_checklist",
+        "questions_before_hiring_caregiver",
+        "assisted_living_comparison",
+        "medication_management_tips",
+        "dementia_early_signs_guide",
+        "senior_transportation_options",
+        "complete_senior_care_planning_guide",
+        "about",
+    }
     return {
         "ga_measurement_id": os.getenv("GA_MEASUREMENT_ID", "G-V33RXLE4PV"),
         "adsense_client": os.getenv("ADSENSE_CLIENT", "ca-pub-4708215788911775"),
+        "show_ads": request.endpoint in ad_eligible_endpoints if request.endpoint else False,
     }
 
 @app.route("/")
