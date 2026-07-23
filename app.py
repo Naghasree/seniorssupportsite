@@ -162,5 +162,12 @@ def robots_txt():
     )
     return Response(robots, mimetype="text/plain")
 
+
+@app.route("/ads.txt")
+def ads_txt():
+    # AdSense publisher declaration required for domain verification.
+    ads = "google.com, pub-4708215788911775, DIRECT, f08c47fec0942fa0\n"
+    return Response(ads, mimetype="text/plain")
+
 if __name__ == "__main__":
     app.run(debug=True)
